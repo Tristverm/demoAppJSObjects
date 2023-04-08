@@ -5,7 +5,7 @@ const movies = [];
 
 //functions
 
-const renderMovies = () => {
+const renderMovies = (filter = "") => {
   const movieList = document.getElementById("movie-list");
 
   if (movies.length === 0) {
@@ -15,7 +15,15 @@ const renderMovies = () => {
     movieList.classList.add("visible");
   }
   movieList.innerHTML = ""; // resetting the Element});
-  movies.forEach((movie) => {
+
+  const filteredMovies =
+    filter === ""
+      ? movies
+      : movies.filter((movie) => {
+          return movie.info.title.includes(filter);
+        });
+
+  filteredMovies.forEach((movie) => {
     const movieEl = document.createElement("li");
 
     let text = movie.info.title + "--";
