@@ -20,7 +20,7 @@ const renderMovies = (filter = "") => {
     filter === ""
       ? movies
       : movies.filter((movie) => {
-          return movie.info.title.includes(filter);
+          return movie.info.title === filter
         });
 
   filteredMovies.forEach((movie) => {
@@ -74,7 +74,7 @@ const addMovieHandler = () => {
 };
 
 const searchMovieHandler = () => {
-  const filterTerm = document.getElementById("filter-title").value;
+  const filterTerm = document.getElementById("filter-title").value.toUpperCase();
 
   renderMovies(filterTerm);
 };
